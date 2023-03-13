@@ -5,8 +5,8 @@
 # export PATH=/usr/local/bin:/Library/TeX/texbin/:$PATH
 
 echo "Updating progress"
-TEX_DOC='responses.tex'
-DOCUMENT='responses.pdf'
+TEX_DOC='/home/runner/work/Thesis/Thesis/main.tex'
+DOCUMENT='/home/runner/work/Thesis/main.pdf'
 PROGRESSFILE='progress.csv'
 
 # Setup CSV if it doesn't exist
