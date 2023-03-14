@@ -7,6 +7,8 @@
 echo "Updating progress"
 TEX_DOC='/home/runner/work/Thesis/Thesis/main.tex'
 DOCUMENT='/home/runner/work/Thesis/main.pdf'
+DIR='/home/runner/work/Thesis/Thesis/'
+
 PROGRESSFILE='progress.csv'
 
 # Setup CSV if it doesn't exist
@@ -15,11 +17,8 @@ if [ ! -f ${PROGRESSFILE} ]; then
 fi
 
 
-WORDCOUNT=`texcount -sum -total -merge {$TEX_DOC} | grep "Sum count:" | tr -d "Sum count: "`
-# Use this line in OSX
-PAGECOUNT=`mdl -name kMDItemNumberOfPages -raw ${DOCUMENT}`
-# Use this line in Linux
-# PAGECOUNT=`pdfinfo ${DOCUMENT} | grep Pages | sed 's/[^0-9]*//'`
+WORDCOUNT=`texcount -sum -total -inc ${TEX_DOC}  -dir ${DIR} | grep "Sum count:" | tr -d "Sum count::"`
+PAGECOUNT=`pdfinfo ${DOCUMENT} | grep Pages | tr -d "Pages: "`
 
 echo `date '+%Y-%m-%d %H:%M:%S'`,$WORDCOUNT,$PAGECOUNT >> $PROGRESSFILE
 echo "Done! Page count ${PAGECOUNT}, word count ${WORDCOUNT}. Written to ${PROGRESSFILE}"
