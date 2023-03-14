@@ -23,4 +23,6 @@ PAGECOUNT=`pdfinfo ${DOCUMENT} | grep Pages | tr -d "Pages: "`
 echo `date '+%Y-%m-%d %H:%M:%S'`,$WORDCOUNT,$PAGECOUNT >> $PROGRESSFILE
 echo "Done! Page count ${PAGECOUNT}, word count ${WORDCOUNT}. Written to ${PROGRESSFILE}"
 
+cat progress.csv
+
 python plotProgress.py ${PROGRESSFILE}
