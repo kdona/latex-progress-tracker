@@ -68,7 +68,7 @@ plt.close()
 ##### Time Delta Plot ####
 def make_pages_plot(axis):
     df.plot(y='pagecount',legend=None, color=pc_color, ax=axis,label="Raw Data")
-    done_resample_df =  df.resample('w').max()
+    done_resample_df =  df.resample('W').max()
     done_resample_df['pagecount'].plot(figsize=(12,8), color='salmon',label="Rolling 7-day Max", ax=axis)
     slope = pd.Series(np.gradient(done_resample_df["pagecount"].values), done_resample_df.index, name='slope')
     plt.sca(axis)
@@ -78,7 +78,7 @@ def make_pages_plot(axis):
 
 def make_words_plot(axis):
     df.plot(y='wordcount',legend=None, color=pc_color, ax=axis,label="Raw Data")
-    done_resample_df =  df.resample('w').max()
+    done_resample_df =  df.resample('W').max()
     done_resample_df['wordcount'].plot(figsize=(12,8), color='salmon',label="Rolling 7-day Max",ax=axis)
     slope = pd.Series(np.gradient(done_resample_df["wordcount"].values), done_resample_df.index, name='slope')
     plt.sca(axis)
